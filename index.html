@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover" />
+  <meta name="theme-color" content="#33041A" />
+  <title>Scaling Partner Digital Excellence — Wellhub Business Case</title>
+  <meta name="description" content="A business case for the Wellhub Digital Channel Specialist role: a three-pillar operating model to take partner digital deflection from 58% to 70% and BSAT from 50% to 60%, grounded in published industry benchmarks and global governance case studies." />
+  <meta name="author" content="Wellhub Business Case" />
+
+  <!-- Open Graph / social previews -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Scaling Partner Digital Excellence — Wellhub Business Case" />
+  <meta property="og:description" content="A three-pillar operating model: 58% → 70% digital deflection, 50% → 60% partner BSAT. Grounded in industry benchmarks." />
+  <meta property="og:site_name" content="Wellhub Business Case" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Scaling Partner Digital Excellence — Wellhub Business Case" />
+  <meta name="twitter:description" content="A three-pillar operating model: 58% → 70% digital deflection, 50% → 60% partner BSAT." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind v4 browser build (no build step required for GitHub Pages) -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      --color-bg:        #33041A;
+      --color-bg-2:      #4E0729;
+      --color-surface:   #70103E;
+      --color-text:      #f0f4ff;
+      --color-text-2:    #c9d3e8;
+      --color-text-mute: #7888a8;
+      --color-accent:    #F24F6F;
+      --color-accent-2:  #F8829C;
+      --color-accent-3:  #FCAEBE;
+      --color-danger:    #F87171;
+      --color-warning:   #FBBF24;
+      --font-display: 'Instrument Serif', Georgia, serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+    }
+  </style>
+
+  <style>
+    /* =========================================================================
+       Wellhub Business Case — Presentation engine
+       Sections:  1. Tokens & base   2. Slide engine   3. Chrome (nav/progress)
+                  4. Components      5. A11y & motion  6. Print
+       ========================================================================= */
+
+    /* 1. Tokens & base ----------------------------------------------------- */
+    :root {
+      --bg:        #33041A;
+      --bg-2:      #4E0729;
+      --surface:   rgba(255,255,255,0.05);
+      --surface-2: rgba(255,255,255,0.07);
+      --border:    rgba(255,255,255,0.09);
+      --text:      #f0f4ff;
+      --text-2:    #c9d3e8;
+      --text-mute: #7888a8;
+      --accent:    #F24F6F;
+      --accent-2:  #F8829C;
+      --accent-3:  #FCAEBE;
+      --danger:    #F87171;
+      --warning:   #FBBF24;
+      --vignette:  rgba(0,0,0,0.45);
+      --ease:      cubic-bezier(0.32, 0.72, 0, 1);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body), 'DM Sans', system-ui, sans-serif;
+    }
+    body {
+      perspective: 1200px;
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      font-feature-settings: "ss01", "cv11", "ss03";
+    }
+    .font-display {
+      font-family: var(--font-display), 'Instrument Serif', Georgia, serif;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+    /* Screen-share / large-text accessibility mode */
+    html { font-size: 16px; transition: font-size 0.4s var(--ease); }
+    html.large-text { font-size: 20px; }
+
+    /* 2. Slide engine ------------------------------------------------------ */
+    .deck { width: 100vw; height: 100vh; position: relative; transform-style: preserve-3d; }
+    .slide {
+      position: absolute; inset: 0;
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0;
+      transform: translateZ(-150px) scale(0.92);
+      transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .slide.active {
+      opacity: 1;
+      transform: translateZ(0) scale(1);
+      pointer-events: all;
+    }
+    .slide.exiting-forward {
+      opacity: 0;
+      transform: translateZ(150px) scale(1.08);
+    }
+    .slide.exiting-backward {
+      opacity: 0;
+      transform: translateZ(-150px) scale(0.92);
+    }
+    .slide > .content {
+      position: relative; z-index: 2;
+      width: 100%;
+      max-width: 1100px;
+      padding: clamp(1.5rem, 3.5vw, 3.5rem);
+    }
+    /* Subtle grain + vignette layered above the gradient mesh */
+    .slide::before {
+      content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+      opacity: 0.03;
+      mix-blend-mode: overlay;
+    }
+    .slide::after {
+      content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: radial-gradient(ellipse at center, transparent 50%, var(--vignette) 100%);
+    }
+
+    /* Floating gradient blobs in the background */
+    .gradient-mesh { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+    .blob { position: absolute; border-radius: 50%; filter: blur(80px); animation: float-slow 12s ease-in-out infinite; will-change: transform; }
+    .blob:nth-child(2) { animation: float-drift 16s ease-in-out infinite; }
+    .blob:nth-child(3) { animation: float-slow 20s ease-in-out infinite reverse; }
+    .blob:nth-child(4) { animation: float-drift 9s ease-in-out infinite reverse; }
+    @keyframes float-slow {
+      0%,100% { transform: translate(0,0) scale(1); }
+      25%     { transform: translate(60px,-50px) scale(1.12); }
+      50%     { transform: translate(-40px,40px) scale(0.9); }
+      75%     { transform: translate(50px,20px) scale(1.08); }
+    }
+    @keyframes float-drift {
+      0%,100% { transform: translate(0,0) scale(1) rotate(0); }
+      33%     { transform: translate(-50px,-60px) scale(1.15) rotate(3deg); }
+      66%     { transform: translate(40px,30px) scale(0.88) rotate(-2deg); }
+    }
+    @keyframes float { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-14px); } }
+
+    /* 3. Chrome — nav, progress, brandmark -------------------------------- */
+    .progress-bar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 2px; z-index: 200;
+      background: rgba(255,255,255,0.06);
+    }
+    .progress-bar > span {
+      display: block; height: 100%; width: 0%;
+      background: linear-gradient(90deg, var(--accent-3), var(--accent), var(--accent-2));
+      box-shadow: 0 0 12px rgba(242,79,111,0.4);
+      transition: width 0.5s var(--ease);
+    }
+    .brandmark {
+      position: fixed; top: 18px; left: 24px; z-index: 150;
+      display: flex; align-items: center; gap: 0.6rem;
+      font-family: var(--font-body), sans-serif;
+      font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--text-mute);
+      pointer-events: none;
+    }
+    .brandmark .dot-mark {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent);
+    }
+    .brandmark strong { color: var(--text-2); font-weight: 600; letter-spacing: 0.15em; }
+
+    .nav-controls {
+      position: fixed; bottom: 24px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; align-items: center; gap: 14px;
+      z-index: 100;
+      background: rgba(255,255,255,0.055);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      padding: 8px 18px;
+      border-radius: 40px;
+      border: 1px solid var(--border);
+    }
+    .nav-btn {
+      width: 36px; height: 36px;
+      border: none; border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+      color: var(--accent);
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.25s var(--ease), color 0.25s var(--ease), transform 0.25s var(--ease);
+    }
+    .nav-btn:hover, .nav-btn:focus-visible {
+      background: rgba(242,79,111,0.22);
+      color: #fff;
+    }
+    .nav-btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .nav-btn.compact { width: auto; height: auto; font-size: 0.72rem; padding: 6px 12px; border-radius: 20px; font-weight: 600; letter-spacing: 0.08em; }
+    .nav-btn.active { background: rgba(242,79,111,0.35); color: #fff; }
+
+    .slide-dots { display: flex; gap: 6px; }
+    .slide-dots .dot {
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.18);
+      cursor: pointer;
+      border: none; padding: 0;
+      transition: background 0.25s var(--ease), transform 0.25s var(--ease);
+    }
+    .slide-dots .dot:hover { background: rgba(255,255,255,0.4); }
+    .slide-dots .dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .slide-dots .dot.active { background: var(--accent); transform: scale(1.4); }
+    .slide-counter {
+      font-size: 0.72rem;
+      color: var(--text-mute);
+      min-width: 40px; text-align: center;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.08em;
+    }
+
+    /* Help overlay */
+    .help-overlay {
+      position: fixed; inset: 0; z-index: 300;
+      background: rgba(20,4,12,0.85);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center; justify-content: center;
+    }
+    .help-overlay.open { display: flex; }
+    .help-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 2rem 2.4rem;
+      max-width: 460px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    }
+    .help-card h3 { font-family: var(--font-display); font-size: 1.6rem; margin: 0 0 0.5rem; }
+    .help-card kbd {
+      display: inline-block;
+      padding: 2px 8px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: rgba(255,255,255,0.04);
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      font-size: 0.78rem;
+      color: var(--text);
+      min-width: 28px;
+      text-align: center;
+    }
+    .help-card .row { display: flex; justify-content: space-between; padding: 0.45rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.85rem; color: var(--text-2); }
+    .help-card .row:last-child { border-bottom: 0; }
+
+    /* 4. Components -------------------------------------------------------- */
+
+    /* Gradient text — always provide a fallback color first */
+    .text-gradient { color: var(--accent); }
+    @supports (-webkit-background-clip: text) {
+      .text-gradient {
+        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 50%, var(--accent-3) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .text-gradient-2 {
+        background: linear-gradient(135deg, var(--accent-3), var(--accent));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+    .text-gradient-2 { color: var(--accent-3); }
+
+    /* Glow */
+    .text-glow      { text-shadow: 0 0 20px rgba(242,79,111,0.5),  0 0 40px rgba(242,79,111,0.2); }
+    .stat-glow      { text-shadow: 0 0 30px rgba(242,79,111,0.6),  0 0 60px rgba(242,79,111,0.25); }
+    .danger-glow    { text-shadow: 0 0 20px rgba(248,113,113,0.6), 0 0 40px rgba(248,113,113,0.25); }
+    .green-glow     { text-shadow: 0 0 20px rgba(252,174,190,0.6), 0 0 40px rgba(252,174,190,0.25); }
+    @keyframes glow-pulse {
+      0%,100% { text-shadow: 0 0 20px rgba(242,79,111,0.5), 0 0 40px rgba(242,79,111,0.2); }
+      50%     { text-shadow: 0 0 30px rgba(242,79,111,0.9), 0 0 60px rgba(242,79,111,0.35); }
+    }
+    .glow-pulse { animation: glow-pulse 3s ease-in-out infinite; }
+
+    /* Cards */
+    .card-hover { transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease); cursor: default; }
+    .card-hover:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(242,79,111,0.15); }
+    .card-danger:hover { box-shadow: 0 16px 40px rgba(248,113,113,0.2); }
+
+    /* Icons (inline-SVG, currentColor) */
+    .icon { display: inline-block; vertical-align: middle; }
+    .icon-tile {
+      width: 36px; height: 36px;
+      border-radius: 9px;
+      display: inline-flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .icon-tile.lg { width: 44px; height: 44px; border-radius: 12px; }
+
+    /* Reveal stagger */
+    .reveal { opacity: 0; transform: translateY(20px); }
+
+    /* Bar fills */
+    .bar-track { height: 28px; border-radius: 14px; background: rgba(255,255,255,0.07); overflow: hidden; }
+    .bar-fill  { height: 100%; border-radius: 14px; width: 0%; transition: width 0.7s var(--ease); }
+
+    /* Timeline */
+    .timeline-line { position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent), var(--accent-2), var(--accent-3)); }
+    .tl-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px rgba(242,79,111,0.6); flex-shrink: 0; }
+
+    /* Mouse spotlight (desktop only) */
+    .mouse-spotlight { position: fixed; inset: 0; z-index: 99; pointer-events: none; }
+
+    /* 5. A11y & motion ---------------------------------------------------- */
+    @media (hover: none) {
+      .mouse-spotlight, .deco-shape { display: none !important; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.2s !important;
+      }
+      .blob { animation: none !important; }
+      .glow-pulse { animation: none !important; }
+      .mouse-spotlight { display: none !important; }
+    }
+    /* Skip link */
+    .skip-link {
+      position: fixed; top: -100px; left: 16px; z-index: 400;
+      background: var(--accent); color: #fff;
+      padding: 10px 16px; border-radius: 8px;
+      font-size: 0.85rem; font-weight: 600;
+      transition: top 0.2s var(--ease);
+    }
+    .skip-link:focus { top: 16px; }
+
+    /* 6. Print — clean PDF backup (Ctrl+P) -------------------------------- */
+    @media print {
+      @page { size: A4 landscape; margin: 0; }
+      html, body { background: #fff !important; color: #1a1a1a !important; height: auto !important; overflow: visible !important; perspective: none !important; }
+      body { font-size: 11pt; }
+      .nav-controls, .brandmark, .progress-bar, .mouse-spotlight, .help-overlay, canvas { display: none !important; }
+      .deck { transform: none !important; height: auto !important; }
+      .slide {
+        position: relative !important;
+        opacity: 1 !important;
+        transform: none !important;
+        page-break-after: always;
+        break-after: page;
+        background: #fff !important;
+        color: #1a1a1a !important;
+        height: 19cm !important;
+        min-height: 19cm !important;
+        max-height: 19cm !important;
+        display: flex !important;
+        padding: 1.2cm !important;
+      }
+      .slide::before, .slide::after, .gradient-mesh { display: none !important; }
+      .slide .content { max-width: 100% !important; padding: 0 !important; color: #1a1a1a !important; }
+      .text-gradient, .text-gradient-2 {
+        color: #b8124a !important;
+        -webkit-text-fill-color: #b8124a !important;
+        background: none !important;
+      }
+      .text-glow, .stat-glow, .glow-pulse, .danger-glow, .green-glow { text-shadow: none !important; }
+      .card-hover { background: #faf6f8 !important; border: 1px solid #e6cfd8 !important; box-shadow: none !important; }
+      [style*="color:#c9d3e8"], [style*="color:#7888a8"], [style*="color: #c9d3e8"], [style*="color: #7888a8"] { color: #444 !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Skip link for screen readers / keyboard users -->
+<a href="#slide-1" class="skip-link">Skip to presentation</a>
+
+<!-- Brandmark (top-left, persistent) -->
+<div class="brandmark" aria-hidden="true">
+  <span class="dot-mark"></span>
+  <span><strong>Wellhub</strong> &middot; Business Case</span>
+</div>
+
+<!-- Progress bar (top, fills as you advance) -->
+<div class="progress-bar" aria-hidden="true"><span id="progress-fill"></span></div>
+
+<!-- Cursor spotlight (desktop only) -->
+<div class="mouse-spotlight" aria-hidden="true"></div>
+
+<!-- ======================================================================
+     ICON LIBRARY — defined once, referenced via <use href="#icon-x">
+     stroke="currentColor" so they take the surrounding text colour.
+     ====================================================================== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="icon-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M17 5h3v3a3 3 0 0 1-3 3M7 5H4v3a3 3 0 0 0 3 3"/>
+    </symbol>
+    <symbol id="icon-warning" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><circle cx="12" cy="17" r="0.6" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-ruler" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21.3 8.7 8.7 21.3a1 1 0 0 1-1.4 0L2.7 16.7a1 1 0 0 1 0-1.4L15.3 2.7a1 1 0 0 1 1.4 0l4.6 4.6a1 1 0 0 1 0 1.4z"/><path d="M14.5 5.5 16 7M11.5 8.5 13 10M8.5 11.5 10 13M5.5 14.5 7 16"/>
+    </symbol>
+    <symbol id="icon-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-6.4A8 8 0 1 1 21 12z"/>
+    </symbol>
+    <symbol id="icon-loop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 12a9 9 0 0 1 15.3-6.4L21 8M21 4v4h-4M21 12a9 9 0 0 1-15.3 6.4L3 16M3 20v-4h4"/>
+    </symbol>
+    <symbol id="icon-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/>
+    </symbol>
+    <symbol id="icon-plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M17.8 19.2 16 11l3.5-3.5a2.1 2.1 0 0 0-3-3L13 8 4.8 6.2a.5.5 0 0 0-.5.8l3 4.6-3 3 1.5.5 1 2 2-1 3 3 .5-.5L11 14l4.5 4.5a.5.5 0 0 0 .8-.5z"/>
+    </symbol>
+    <symbol id="icon-package" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16.5 9.4 7.5 4.2M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7 12 12l8.7-5M12 22V12"/>
+    </symbol>
+    <symbol id="icon-bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.7.5 1 1.3 1 2.1V18h6v-1.2c0-.8.3-1.6 1-2.1A7 7 0 0 0 12 2z"/>
+    </symbol>
+    <symbol id="icon-handshake" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m11 17 2 2 4-4M3 12l5-5 4 4 4-4 5 5-5 5-4-4-4 4-5-5z"/>
+    </symbol>
+    <symbol id="icon-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/>
+    </symbol>
+    <symbol id="icon-plug" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 2v4M15 2v4M7 6h10v6a5 5 0 0 1-10 0V6zM12 17v5"/>
+    </symbol>
+    <symbol id="icon-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v18H6.5A2.5 2.5 0 0 0 4 22.5v-18zM4 4.5V20"/><path d="M8 7h8M8 11h6"/>
+    </symbol>
+    <symbol id="icon-unlock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/>
+    </symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>
+    </symbol>
+    <symbol id="icon-signal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12.55a11 11 0 0 1 14 0M1.4 8.95a16 16 0 0 1 21.2 0M8.5 16.4a6 6 0 0 1 7 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/>
+    </symbol>
+    <symbol id="icon-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>
+    </symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m5 12 5 5L20 7"/>
+    </symbol>
+    <symbol id="icon-trending" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>
+    </symbol>
+    <symbol id="icon-arrow-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M13 5l7 7-7 7"/>
+    </symbol>
+  </defs>
+</svg>
+
+<main class="deck" id="deck">
+
+<!-- SLIDE 1 — TITLE -->
+<section class="slide active" data-slide="1" id="slide-1" role="region" aria-roledescription="slide" aria-label="Slide 1: Scaling Partner Digital Excellence">
+  <div class="gradient-mesh">
+    <div class="blob" style="width:520px;height:520px;top:-120px;right:-100px;background:#F24F6F;opacity:.13"></div>
+    <div class="blob" style="width:320px;height:320px;bottom:-80px;left:-60px;background:#F8829C;opacity:.11"></div>
+    <div class="blob" style="width:200px;height:200px;top:40%;left:10%;background:#FCAEBE;opacity:.08"></div>
+  </div>
+  <div class="content text-center">
+    <div class="reveal" style="margin-bottom:1.4rem;display:inline-flex;align-items:center;justify-content:center;width:84px;height:84px;border-radius:24px;background:linear-gradient(135deg,rgba(242,79,111,.18),rgba(252,174,190,.08));border:1px solid rgba(242,79,111,.3);color:#F24F6F;animation:float 3.5s ease-in-out infinite;">
+      <svg class="icon" width="42" height="42" aria-hidden="true"><use href="#icon-trophy"/></svg>
+    </div>
+    <div class="reveal" style="display:inline-block;padding:.35rem 1.1rem;border-radius:20px;background:rgba(242,79,111,.12);border:1px solid rgba(242,79,111,.25);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:#F24F6F;margin-bottom:1.4rem;font-weight:500;">Business Case Challenge</div>
+    <h1 class="font-display reveal text-gradient" style="font-size:clamp(2.6rem,5.5vw,4.8rem);line-height:1.05;margin:0 0 1.2rem;">Scaling Partner<br>Digital Excellence</h1>
+    <p class="reveal" style="font-size:clamp(.85rem,1.3vw,1.1rem);letter-spacing:.3em;text-transform:uppercase;color:#7888a8;margin-bottom:2rem;">Digital Channel Specialist &middot; Wellhub</p>
+    <div class="reveal" style="display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;align-items:center;">
+      <div style="text-align:center;">
+        <div class="text-gradient glow-pulse" style="font-size:1.8rem;font-weight:700;">58% &rarr; 70%</div>
+        <div style="font-size:.72rem;color:#7888a8;text-transform:uppercase;letter-spacing:.14em;">Digital Deflection</div>
+      </div>
+      <div style="width:1px;height:36px;background:rgba(255,255,255,.1);"></div>
+      <div style="text-align:center;">
+        <div class="text-gradient-2" style="font-size:1.8rem;font-weight:700;">50% &rarr; 60%</div>
+        <div style="font-size:.72rem;color:#7888a8;text-transform:uppercase;letter-spacing:.14em;">Partner BSAT</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SLIDE 2 — AGENDA -->
+<section class="slide" data-slide="2" id="slide-2" role="region" aria-roledescription="slide" aria-label="Slide 2: Agenda">
+  <div class="gradient-mesh">
+    <div class="blob" style="width:350px;height:350px;top:-80px;right:-80px;background:#F24F6F;opacity:.07"></div>
+    <div class="blob" style="width:250px;height:250px;bottom:-60px;left:-40px;background:#F8829C;opacity:.06"></div>
+  </div>
+  <div class="content">
+    <p class="reveal" style="font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#F24F6F;margin-bottom:.4rem;font-weight:500;">Today&rsquo;s Agenda &middot; 30 min</p>
+    <h2 class="font-display reveal" style="font-size:clamp(1.8rem,3.5vw,2.8rem);margin:0 0 1.6rem;">Five Acts of a Strategy</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div class="reveal card-hover" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.3rem;border-left:3px solid #F87171;">
+          <span class="icon-tile" style="background:rgba(248,113,113,.15);color:#F87171;margin-bottom:.5rem;"><svg class="icon" width="20" height="20" aria-hidden="true"><use href="#icon-warning"/></svg></span>
+          <div style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:#F87171;margin-bottom:.3rem;font-weight:500;">Risk Framing</div>
+          <div style="font-size:.9rem;color:var(--text-2);">Why chatbot governance matters now &mdash; global cases</div>
+        </div>
+        <div class="reveal card-hover" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.3rem;border-left:3px solid #FBBF24;">
+          <span class="icon-tile" style="background:rgba(251,191,36,.15);color:#FBBF24;margin-bottom:.5rem;"><svg class="icon" width="20" height="20" aria-hidden="true"><use href="#icon-ruler"/></svg></span>
+          <div style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:#FBBF24;margin-bottom:.3rem;font-weight:500;">Pillar A</div>
+          <div style="font-size:.9rem;color:var(--text-2);">Intelligence &amp; Intent Mapping &mdash; classify before automating</div>
+        </div>
+        <div class="reveal card-hover" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.3rem;border-left:3px solid #F24F6F;">
+          <span class="icon-tile" style="background:rgba(242,79,111,.15);color:#F24F6F;margin-bottom:.5rem;"><svg class="icon" width="20" height="20" aria-hidden="true"><use href="#icon-chat"/></svg></span>
+          <div style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:#F24F6F;margin-bottom:.3rem;font-weight:500;">Pillar B</div>
+          <div style="font-size:.9rem;color:var(--text-2);">Conversational Experience &mdash; resolution, not redirection</div>
+        </div>
+        <div class="reveal card-hover" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.3rem;border-left:3px solid #FCAEBE;">
+          <span class="icon-tile" style="background:rgba(252,174,190,.15);color:#FCAEBE;margin-bottom:.5rem;"><svg class="icon" width="20" height="20" aria-hidden="true"><use href="#icon-loop"/></svg></span>
+          <div style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:#FCAEBE;margin-bottom:.3rem;font-weight:500;">Pillar C</div>
+          <div style="font-size:.9rem;color:var(--text-2);">Feedback Loop &mdash; BSAT as an improvement engine</div>
+        </div>
+    </div>
+    <div class="reveal" style="margin-top:1rem;background:rgba(242,79,111,.07);border:1px solid rgba(242,79,111,.15);border-radius:14px;padding:.85rem 1.3rem;display:flex;align-items:center;gap:.9rem;">
+      <span class="icon-tile" style="background:rgba(242,79,111,.15);color:#F24F6F;width:32px;height:32px;border-radius:8px;"><svg class="icon" width="18" height="18" aria-hidden="true"><use href="#icon-chart"/></svg></span>
+      <span style="font-size:.875rem;color:var(--text-2);"><strong style="color:#F24F6F;">External proof</strong> &mdash; industry benchmarks &amp; global case studies throughout</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- SLIDE 3 — RISK FRAMING -->
+<section class="slide" data-slide="3" id="slide-3" role="region" aria-roledescription="slide" aria-label="Slide 3: Why governance matters">
+  <div class="gradient-mesh">
+    <div class="blob" style="width:400px;height:400px;top:-100px;right:-80px;background:#F87171;opacity:.09"></div>
+    <div class="blob" style="width:280px;height:280px;bottom:-60px;left:-50px;background:#FBBF24;opacity:.07"></div>
+  </div>
+  <div class="content">
+    <p class="reveal" style="font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#F87171;margin-bottom:.4rem;font-weight:500;">Risk Framing &middot; Why This Matters Now</p>
+    <h2 class="font-display reveal" style="font-size:clamp(1.8rem,3.5vw,2.7rem);margin:0 0 .4rem;font-style:italic;">Bad automation scales failure<br>faster than service.</h2>
+    <p class="reveal" style="font-size:.85rem;color:#7888a8;margin-bottom:1.5rem;">Two international cases that became governance benchmarks</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;">
+      <article class="reveal card-hover card-danger" style="background:rgba(248,113,113,.07);border:1px solid rgba(248,113,113,.2);border-radius:16px;padding:1.4rem;">
+        <header style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
+          <span class="icon-tile" style="background:rgba(248,113,113,0.15);color:rgb(248,113,113);"><svg class="icon" width="20" height="20" aria-hidden="true"><use href="#icon-plane"/></svg></span>
+          <div>
+            <div style="font-weight:600;font-size:.95rem;">Air Canada</div>
+            <div style="font-size:.7rem;color:#F87171;letter-spacing:.08em;text-transform:uppercase;">Hallucination &middot; Legal liability &middot; 2024</div>
+          </div>
+        </header>
+        <p style="font-size:.82rem;color:var(--text-2);line-height:1.55;margin-bottom:.8rem;">Chatbot fabricated a bereavement fare refund policy. Customer relied on it. The airline was found <strong style="color:#F87171;">legally responsible</strong> for misinformation generated by its own bot &mdash; without content guardrails or knowledge grounding.</p>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+          <span style="font-size:.68rem;padding:.2rem .6rem;border-radius:20px;background:rgba(248,113,113,.15);color:#F87171;">Hallucination</span>
+          <span style="font-size:.68rem;padding:.2rem .6rem;border-radius:20px;background:rgba(248,113,113,.15);color:#F87171;">No content audit</span>
+          <span style="font-size:.68rem;padding:.2rem .6rem;border-radius:20px;background:rgba(248,113,113,.15);color:#F87171;">Reputational damage</span>
+        </div>
+      </article>
+      <article class="reveal card-hover card-danger" style="background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.2);border-radius:16px;padding:1.4rem;">
+        <header style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
+          <span class="icon-tile" style="background:rgba(251,191,36,0.15);color:rgb(251,191,36);"><svg class="icon" width="20" height="20" aria-hidden="true"><use href="#icon-package"/></svg></span>
+          <div>
+            <div style="font-weight:600;font-size:.95rem;">DPD Parcel Delivery</div>
+            <div style="font-size:.7rem;color:#FBBF24;letter-spacing:.08em;text-transform:uppercase;">Behavioural failure &middot; Viral &middot; 2024</div>
+          </div>
+        </header>
+        <p style="font-size:.82rem;color:var(--text-2);line-height:1.55;margin-bottom:.8rem;">After a system update, the bot insulted a customer and <strong style="color:#FBBF24;">criticised its own company</strong> publicly. DPD was forced to disable the AI component. The interaction went viral in hours &mdash; no behavioural guardrails, no tone controls, no confidence thresholds.</p>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+          <span style="font-size:.68rem;padding:.2rem .6rem;border-radius:20px;background:rgba(251,191,36,.15);color:#FBBF24;">No tone guardrails</span>
+          <span style="font-size:.68rem;padding:.2rem .6rem;border-radius:20px;background:rgba(251,191,36,.15);color:#FBBF24;">Missing confidence filter</span>
+          <span style="font-size:.68rem;padding:.2rem .6rem;border-radius:20px;background:rgba(251,191,36,.15);color:#FBBF24;">Bot disabled urgently</span>
+        </div>
+      </article>
+    </div>
+    <div class="reveal" style="margin-top:1rem;background:rgba(242,79,111,.07);border:1px solid rgba(242,79,111,.15);border-radius:12px;padding:.8rem 1.2rem;display:flex;align-items:center;gap:.8rem;">
+      <span class="icon-tile" style="width:30px;height:30px;border-radius:8px;background:rgba(242,79,111,.15);color:#F24F6F;"><svg class="icon" width="16" height="16" aria-hidden="true"><use href="#icon-bulb"/></svg></span>
+      <span style="font-size:.82rem;color:var(--text-2);"><strong style="color:#F24F6F;">The pattern is identical:</strong> knowledge gaps + no behavioural controls + weak escalation logic = automation becomes brand risk, not efficiency.</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- SLIDE 4 — BENCHMARK -->
+<section class="slide" data-slide="4" id="slide-4" role="region" aria-roledescription="slide" aria-label="Slide 4: Industry benchmarks">
+  <div class="gradient-mesh">
+    <div class="blob" style="width:380px;height:380px;top:-80px;right:-60px;background:#FCAEBE;opacity:.08"></div>
+    <div class="blob" style="width:260px;height:260px;bottom:-50px;left:-40px;background:#F24F6F;opacity:.07"></div>
+  </div>
+  <div class="content">
+    <p class="reveal" style="font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#FCAEBE;margin-bottom:.4rem;font-weight:500;">External Proof &middot; Industry Benchmarks</p>
+    <h2 class="font-display reveal" style="font-size:clamp(1.7rem,3.2vw,2.6rem);margin:0 0 .3rem;font-style:italic;">Scale is achievable &mdash;<br>but only with discipline.</h2>
+    <p class="reveal" style="font-size:.82rem;color:#7888a8;margin-bottom:1.4rem;">Published benchmarks from mature AI support deployments</p>
+    <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:1.4rem;align-items:start;">
+      <div>
+        <div class="reveal" style="background:rgba(252,174,190,.07);border:1px solid rgba(252,174,190,.18);border-radius:14px;padding:1.3rem;text-align:center;margin-bottom:1rem;">
+          <div class="text-gradient-2 green-glow" style="font-size:2.8rem;font-weight:700;">60&ndash;80%</div>
+          <div style="font-size:.7rem;color:#FCAEBE;text-transform:uppercase;letter-spacing:.1em;margin-top:.3rem;">Automated resolution rate</div>
+          <div style="font-size:.75rem;color:#7888a8;margin-top:.4rem;">Mature AI support deployments</div>
+        </div>
+        <div class="reveal" style="background:rgba(242,79,111,.07);border:1px solid rgba(242,79,111,.15);border-radius:14px;padding:1.3rem;text-align:center;">
+          <div class="text-gradient glow-pulse" style="font-size:2.8rem;font-weight:700;">+12 pts</div>
+          <div style="font-size:.7rem;color:#F24F6F;text-transform:uppercase;letter-spacing:.1em;margin-top:.3rem;">Target Deflection Gain</div>
+          <div style="font-size:.75rem;color:#7888a8;margin-top:.4rem;">Wellhub: 58% &rarr; 70%</div>
+        </div>
+      </div>
+      <div>
+        <div class="reveal" style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:#7888a8;margin-bottom:.8rem;">What separates high-performers from the rest</div>
+        <div style="display:flex;flex-direction:column;gap:.6rem;">
+          <div class="reveal">
+            <div style="display:flex;justify-content:space-between;margin-bottom:.3rem;font-size:.8rem;"><span style="color:var(--text-2);">Knowledge base coverage</span><span style="color:#FCAEBE;font-weight:600;">Critical</span></div>
+            <div class="bar-track"><div class="bar-fill" data-width="92" style="background:linear-gradient(90deg,#FCAEBE,#F24F6F);"></div></div>
+          </div>
+          <div class="reveal">
+            <div style="display:flex;justify-content:space-between;margin-bottom:.3rem;font-size:.8rem;"><span style="color:var(--text-2);">Intent classification accuracy</span><span style="color:#F24F6F;font-weight:600;">High</span></div>
+            <div class="bar-track"><div class="bar-fill" data-width="85" style="background:linear-gradient(90deg,#F24F6F,#F8829C);"></div></div>
+          </div>
+          <div class="reveal">
+            <div style="display:flex;justify-content:space-between;margin-bottom:.3rem;font-size:.8rem;"><span style="color:var(--text-2);">Use case design quality</span><span style="color:#F8829C;font-weight:600;">High</span></div>
+            <div class="bar-track"><div class="bar-fill" data-width="78" style="background:linear-gradient(90deg,#F8829C,#F87171);"></div></div>
+          </div>
+          <div class="reveal">
+            <div style="display:flex;justify-content:space-between;margin-bottom:.3rem;font-size:.8rem;"><span style="color:var(--text-2);">Escalation logic clarity</span><span style="color:#FBBF24;font-weight:600;">Medium</span></div>
+            <div class="bar-track"><div class="bar-fill" data-width="62" style="background:linear-gradient(90deg,#FBBF24,#F87171);"></div></div>
+          </div>
+          <div class="reveal">
+            <div style="display:flex;justify-content:space-between;margin-bottom:.3rem;font-size:.8rem;"><span style="color:var(--text-2);">Post-launch improvement cadence</span><span style="color:#FCAEBE;font-weight:600;">Critical</span></div>
+            <div class="bar-track"><div class="bar-fill" data-width="88" style="background:linear-gradient(90deg,#FCAEBE,#F24F6F);"></div></div>
+          </div>
+        </div>
+        <div class="reveal" style="margin-top:.9rem;background:rgba(255,255,255,.04);border-radius:10px;padding:.7rem 1rem;font-size:.78rem;color:#7888a8;border:1px solid rgba(255,255,255,.07);">
+          <em>Scale doesn&rsquo;t come from installing AI. It comes from the operating system <strong style="color:var(--text-2);">around</strong> AI.</em>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SLIDE 5 — PILLAR A -->
+<section class="slide" data-slide="5" id="slide-5" role="region" aria-roledescription="slide" aria-label="Slide 5: Pillar A — Intelligence and Intent Mapping">
+  <div class="gradient-mesh">
+    <div class="blob" style="width:420px;height:420px;top:-100px;right:-80px;background:#FBBF24;opacity:.08"></div>
+    <div class="blob" style="width:280px;height:280px;bottom:-50px;left:-40px;background:#F24F6F;opacity:.07"></div>
+  </div>
+  <div class="content">
+    <div class="reveal" style="display:flex;align-items:center;gap:.8rem;margin-bottom:.5rem;">
+      <div style="background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.25);border-radius:8px;padding:.3rem .7rem;font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:#FBBF24;font-weight:600;">Pillar A</div>
+      <div style="font-size:.75rem;color:#7888a8;">Intelligence &amp; Intent Mapping</div>
+    </div>
+    <h2 class="font-display reveal" style="font-size:clamp(1.7rem,3.2vw,2.5rem);margin:0 0 1.2rem;font-style:italic;">Start with intent economics,<br>not bot complexity.</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1rem;">
+      <div class="reveal">
+        <div style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:#7888a8;margin-bottom:.6rem;">Intent classification matrix</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">
+          <div style="background:rgba(248,113,113,.12);border:1px solid rgba(248,113,113,.2);border-radius:10px 0 0 0;padding:.85rem;text-align:center;">
+            <div style="color:#F87171;margin-bottom:.4rem;"><svg class="icon" width="22" height="22" aria-hidden="true"><use href="#icon-handshake"/></svg></div>
+            <div style="font-size:.68rem;font-weight:700;color:#F87171;text-transform:uppercase;letter-spacing:.08em;">High-Touch</div>
+            <div style="font-size:.68rem;color:#F87171;opacity:.7;">High-Value</div>
+            <div style="font-size:.72rem;color:var(--text-2);margin-top:.3rem;">Human specialist<br>+ qualified routing</div>
+          </div>
+          <div style="background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.2);border-radius:0 10px 0 0;padding:.85rem;text-align:center;">
+            <div style="color:#FBBF24;margin-bottom:.4rem;"><svg class="icon" width="22" height="22" aria-hidden="true"><use href="#icon-bolt"/></svg></div>
+            <div style="font-size:.68rem;font-weight:700;color:#FBBF24;text-transform:uppercase;letter-spacing:.08em;">High-Volume</div>
+            <div style="font-size:.68rem;color:#FBBF24;opacity:.7;">Low-Value</div>
+            <div style="font-size:.72rem;color:var(--text-2);margin-top:.3rem;">Zero-touch auto<br>resolution</div>
+          </div>
+          <div style="background:rgba(242,79,111,.1);border:1px solid rgba(242,79,111,.2);border-radius:0 0 0 10px;padding:.85rem;text-align:center;">
+            <div style="color:#F24F6F;margin-bottom:.4rem;"><svg class="icon" width="22" height="22" aria-hidden="true"><use href="#icon-plug"/></svg></div>
+            <div style="font-size:.68rem;font-weight:700;color:#F24F6F;text-transform:uppercase;letter-spacing:.08em;">API-Dependent</div>
+            <div style="font-size:.68rem;color:#F24F6F;opacity:.7;">Live Data Needed</div>
+            <div style="font-size:.72rem;color:var(--text-2);margin-top:.3rem;">Sequenced by<br>impact score</div>
+          </div>
+          <div style="background:rgba(248,130,156,.1);border:1px solid rgba(248,130,156,.2);border-radius:0 0 10px 0;padding:.85rem;text-align:center;">
+            <div style="color:#F8829C;margin-bottom:.4rem;"><svg class="icon" width="22" height="22" aria-hidden="true"><use href="#icon-book"/></svg></div>
+            <div style="font-size:.68rem;font-weight:700;color:#F8829C;text-transform:uppercase;letter-spacing:.08em;">Content Gap</div>
+            <div style="font-size:.68rem;color:#F8829C;opacity:.7;">Knowledge Missing</div>
+            <div style="font-size:.72rem;color:var(--text-2);margin-top:.3rem;">Content audit<br>+ sprint fix</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:#7888a8;margin-bottom:.6rem;">Execution sequence</div>
+        <div style="position:relative;padding-left:2.2rem;">
+          <div class="timeline-line"></div>
+          <div style="display:flex;flex-direction:column;gap:.7rem;">
+            <div style="display:flex;align-items:flex-start;gap:.7rem;position:relative;">
+              <div class="tl-dot" style="position:absolute;left:-2.2rem;top:.2rem;background:#FBBF24;box-shadow:0 0 10px rgba(251,191,36,.5);"></div>
+              <div><div style="font-weight:600;font-size:.82rem;">1. Content Audit</div><div style="font-size:.75rem;color:#7888a8;">Map use cases vs Help Center coverage</div></div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:.7rem;position:relative;">
+              <div class="tl-dot" style="position:absolute;left:-2.2rem;top:.2rem;"></div>
+              <div><div style="font-weight:600;font-size:.82rem;">2. Tag Architecture</div><div style="font-size:.75rem;color:#7888a8;">Tag every intent, fallback, loop in Zendesk</div></div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:.7rem;position:relative;">
+              <div class="tl-dot" style="position:absolute;left:-2.2rem;top:.2rem;background:#F8829C;box-shadow:0 0 10px rgba(248,130,156,.5);"></div>
+              <div><div style="font-weight:600;font-size:.82rem;">3. Pareto Sprint</div><div style="font-size:.75rem;color:#7888a8;">Top 3 fallback drivers first via 80/20 filter</div></div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:.7rem;position:relative;">
+              <div class="tl-dot" style="position:absolute;left:-2.2rem;top:.2rem;background:#FCAEBE;box-shadow:0 0 10px rgba(252,174,190,.5);"></div>
+              <div><div style="font-weight:600;font-size:.82rem;">4. API Roadmap</div><div style="font-size:.75rem;color:#7888a8;">Sequence by deflection impact, not complexity</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal" style="background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.15);border-radius:10px;padding:.7rem 1.1rem;font-size:.8rem;color:var(--text-2);display:flex;align-items:center;gap:.7rem;">
+      <span style="color:#FBBF24;flex-shrink:0;"><svg class="icon" width="18" height="18" aria-hidden="true"><use href="#icon-trending"/></svg></span>
+      <span><strong style="color:#FBBF24;">KPI Impact:</strong> Tag architecture creates use-case-level BSAT and escalation rate visibility inside Zendesk Explore &mdash; not just aggregate metrics.</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- SLIDE 6 — PILLAR B -->
+<section class="slide" data-slide="6" id="slide-6" role="region" aria-roledescription="slide" aria-label="Slide 6: Pillar B — Conversational Experience">
+  <div class="gradient-mesh">
+    <div class="blob" style="width:420px;height:420px;top:-100px;right:-80px;background:#F24F6F;opacity:.09"></div>
+    <div class="blob" style="width:260px;height:260px;bottom:-50px;left:-40px;background:#F8829C;opacity:.08"></div>
+  </div>
+  <div class="content">
+    <div class="reveal" style="display:flex;align-items:center;gap:.8rem;margin-bottom:.5rem;">
+      <div style="background:rgba(242,79,111,.12);border:1px solid rgba(242,79,111,.25);border-radius:8px;padding:.3rem .7rem;font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:#F24F6F;font-weight:600;">Pillar B</div>
+      <div style="font-size:.75rem;color:#7888a8;">Conversational Experience &middot; Bot Persona</div>
+    </div>
+    <h2 class="font-display reveal" style="font-size:clamp(1.7rem,3.2vw,2.5rem);margin:0 0 1.2rem;font-style:italic;">Resolution beats redirection<br>every single time.</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.9rem;margin-bottom:1rem;">
+      <article class="reveal card-hover" style="background:rgba(242,79,111,.07);border:1px solid rgba(242,79,111,.18);border-radius:14px;padding:1.1rem;">
+        <span class="icon-tile" style="background:rgba(242,79,111,.15);color:#F24F6F;margin-bottom:.6rem;"><svg class="icon" width="20" height="20" aria-hidden="true"><use href="#icon-unlock"/></svg></span>
+        <div style="font-weight:600;font-size:.88rem;color:#F24F6F;margin-bottom:.4rem;">Multi-Turn Dialogue</div>
+        <p style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin:0;">Replace rigid click paths with generative use cases that understand free-text and resolve natively in-session.</p>
+      </article>
+      <article class="reveal card-hover" style="background:rgba(248,130,156,.07);border:1px solid rgba(248,130,156,.18);border-radius:14px;padding:1.1rem;">
+        <span class="icon-tile" style="background:rgba(248,130,156,.15);color:#F8829C;margin-bottom:.6rem;"><svg class="icon" width="20" height="20" aria-hidden="true"><use href="#icon-shield"/></svg></span>
+        <div style="font-weight:600;font-size:.88rem;color:#F8829C;margin-bottom:.4rem;">Prompt Guardrails</div>
+        <p style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin:0;">Tone of voice, confidence thresholds, escalation triggers &mdash; bot never improvises beyond approved knowledge.</p>
+      </article>
+      <article class="reveal card-hover" style="background:rgba(252,174,190,.07);border:1px solid rgba(252,174,190,.18);border-radius:14px;padding:1.1rem;">
+        <span class="icon-tile" style="background:rgba(252,174,190,.15);color:#FCAEBE;margin-bottom:.6rem;"><svg class="icon" width="20" height="20" aria-hidden="true"><use href="#icon-plug"/></svg></span>
+        <div style="font-weight:600;font-size:.88rem;color:#FCAEBE;margin-bottom:.4rem;">API Sequencing</div>
+        <p style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin:0;">Prioritise integrations by resolution impact &mdash; not every endpoint needs day-one deployment.</p>
+      </article>
+    </div>
+    <div class="reveal" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:1rem 1.4rem;">
+      <div style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:#7888a8;margin-bottom:.7rem;">Resolution funnel &mdash; from contact to outcome</div>
+      <div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;">
+        <div style="text-align:center;flex:1;min-width:80px;"><div style="background:rgba(242,79,111,.12);border:1px solid rgba(242,79,111,.2);border-radius:8px;padding:.5rem;font-size:.75rem;color:#F24F6F;font-weight:600;">Partner Intent</div></div>
+        <span style="color:#7888a8;"><svg class="icon" width="14" height="14" aria-hidden="true"><use href="#icon-arrow-r"/></svg></span>
+        <div style="text-align:center;flex:1;min-width:80px;"><div style="background:rgba(248,130,156,.12);border:1px solid rgba(248,130,156,.2);border-radius:8px;padding:.5rem;font-size:.75rem;color:#F8829C;font-weight:600;">Intent Classification</div></div>
+        <span style="color:#7888a8;"><svg class="icon" width="14" height="14" aria-hidden="true"><use href="#icon-arrow-r"/></svg></span>
+        <div style="text-align:center;flex:1;min-width:80px;"><div style="background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.2);border-radius:8px;padding:.5rem;font-size:.75rem;color:#FBBF24;font-weight:600;">Multi-Turn Resolution</div></div>
+        <span style="color:#7888a8;"><svg class="icon" width="14" height="14" aria-hidden="true"><use href="#icon-arrow-r"/></svg></span>
+        <div style="text-align:center;flex:1;min-width:80px;"><div style="background:rgba(252,174,190,.12);border:1px solid rgba(252,174,190,.2);border-radius:8px;padding:.5rem;font-size:.75rem;color:#FCAEBE;font-weight:600;">Autonomous Close</div></div>
+        <span style="color:#7888a8;"><svg class="icon" width="14" height="14" aria-hidden="true"><use href="#icon-arrow-r"/></svg></span>
+        <div style="text-align:center;flex:1;min-width:80px;"><div style="background:rgba(248,113,113,.12);border:1px solid rgba(248,113,113,.2);border-radius:8px;padding:.5rem;font-size:.75rem;color:#F87171;font-weight:600;">Qualified Handoff</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SLIDE 7 — PILLAR C -->
+<section class="slide" data-slide="7" id="slide-7" role="region" aria-roledescription="slide" aria-label="Slide 7: Pillar C — Feedback Loop">
+  <div class="gradient-mesh">
+    <div class="blob" style="width:400px;height:400px;top:-80px;right:-60px;background:#FCAEBE;opacity:.09"></div>
+    <div class="blob" style="width:260px;height:260px;bottom:-50px;left:-40px;background:#F24F6F;opacity:.07"></div>
+  </div>
+  <div class="content">
+    <div class="reveal" style="display:flex;align-items:center;gap:.8rem;margin-bottom:.5rem;">
+      <div style="background:rgba(252,174,190,.12);border:1px solid rgba(252,174,190,.25);border-radius:8px;padding:.3rem .7rem;font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:#FCAEBE;font-weight:600;">Pillar C</div>
+      <div style="font-size:.75rem;color:#7888a8;">Feedback Loop &middot; BSAT Strategy</div>
+    </div>
+    <h2 class="font-display reveal" style="font-size:clamp(1.7rem,3.2vw,2.5rem);margin:0 0 1rem;font-style:italic;">Dissatisfaction should trigger action,<br>not a monthly report.</h2>
+    <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:1.3rem;align-items:start;">
+      <div style="display:flex;flex-direction:column;gap:.8rem;">
+        <article class="reveal card-hover" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1rem 1.2rem;border-left:3px solid #F87171;">
+          <div style="font-weight:600;font-size:.85rem;margin-bottom:.3rem;color:#F87171;">Layer 1 &mdash; Signal Capture</div>
+          <p style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin:0;">Tag architecture from Pillar A becomes the BSAT early warning system. Every negative rating, loop, and cold escalation tagged in real time.</p>
+        </article>
+        <article class="reveal card-hover" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1rem 1.2rem;border-left:3px solid #F24F6F;">
+          <div style="font-weight:600;font-size:.85rem;margin-bottom:.3rem;color:#F24F6F;">Layer 2 &mdash; Data Pipeline</div>
+          <p style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin:0;">Zendesk API &rarr; Python/Pandas &rarr; Looker Studio. Conversation-level friction view: which use case, which intent, which KB article correlates with BSAT drops.</p>
+        </article>
+        <article class="reveal card-hover" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1rem 1.2rem;border-left:3px solid #FCAEBE;">
+          <div style="font-weight:600;font-size:.85rem;margin-bottom:.3rem;color:#FCAEBE;">Layer 3 &mdash; Action Loop</div>
+          <p style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin:0;">Identify friction &rarr; fix &rarr; deploy &rarr; validate with post-delivery metrics. A/B test higher-risk changes with a curated cohort of top partners.</p>
+        </article>
+      </div>
+      <div class="reveal">
+        <div style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:#7888a8;margin-bottom:.8rem;">Continuous improvement engine</div>
+        <div style="display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:center;gap:.8rem;padding:.7rem .9rem;background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.18);border-radius:10px 10px 0 0;border-bottom:none;">
+            <span class="icon-tile" style="width:30px;height:30px;border-radius:50%;background:rgba(248,113,113,.2);color:#F87171;"><svg class="icon" width="16" height="16" aria-hidden="true"><use href="#icon-signal"/></svg></span>
+            <div style="font-size:.82rem;"><strong style="color:#F87171;">Detect</strong> &mdash; BSAT signal or friction tag fires</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:.8rem;padding:.7rem .9rem;background:rgba(242,79,111,.08);border-left:1px solid rgba(242,79,111,.18);border-right:1px solid rgba(242,79,111,.18);">
+            <span class="icon-tile" style="width:30px;height:30px;border-radius:50%;background:rgba(242,79,111,.2);color:#F24F6F;"><svg class="icon" width="16" height="16" aria-hidden="true"><use href="#icon-search"/></svg></span>
+            <div style="font-size:.82rem;"><strong style="color:#F24F6F;">Diagnose</strong> &mdash; root cause: content? prompt? API? routing?</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:.8rem;padding:.7rem .9rem;background:rgba(251,191,36,.07);border-left:1px solid rgba(251,191,36,.18);border-right:1px solid rgba(251,191,36,.18);">
+            <span class="icon-tile" style="width:30px;height:30px;border-radius:50%;background:rgba(251,191,36,.2);color:#FBBF24;"><svg class="icon" width="16" height="16" aria-hidden="true"><use href="#icon-gear"/></svg></span>
+            <div style="font-size:.82rem;"><strong style="color:#FBBF24;">Fix &amp; Deploy</strong> &mdash; targeted use case or KB update</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:.8rem;padding:.7rem .9rem;background:rgba(252,174,190,.08);border:1px solid rgba(252,174,190,.18);border-radius:0 0 10px 10px;border-top:none;">
+            <span class="icon-tile" style="width:30px;height:30px;border-radius:50%;background:rgba(252,174,190,.2);color:#FCAEBE;"><svg class="icon" width="16" height="16" aria-hidden="true"><use href="#icon-check"/></svg></span>
+            <div style="font-size:.82rem;"><strong style="color:#FCAEBE;">Validate</strong> &mdash; post-delivery metrics confirm improvement</div>
+          </div>
+        </div>
+        <div style="margin-top:.8rem;background:rgba(252,174,190,.06);border:1px solid rgba(252,174,190,.13);border-radius:10px;padding:.65rem 1rem;font-size:.78rem;color:#7888a8;display:flex;align-items:center;gap:.6rem;">
+          <span style="color:#FCAEBE;flex-shrink:0;"><svg class="icon" width="16" height="16" aria-hidden="true"><use href="#icon-chart"/></svg></span>
+          <em>Zendesk AI reporting tracks BSAT and escalation at use-case level &mdash; exactly the lens this loop requires.</em>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SLIDE 8 — CLOSING / 90-DAY ROADMAP -->
+<section class="slide" data-slide="8" id="slide-8" role="region" aria-roledescription="slide" aria-label="Slide 8: 90-day roadmap and KPI targets">
+  <div class="gradient-mesh">
+    <div class="blob" style="width:500px;height:500px;top:-120px;right:-100px;background:#F24F6F;opacity:.12"></div>
+    <div class="blob" style="width:300px;height:300px;bottom:-70px;left:-50px;background:#FCAEBE;opacity:.1"></div>
+    <div class="blob" style="width:200px;height:200px;top:35%;left:12%;background:#F8829C;opacity:.08"></div>
+  </div>
+  <div class="content">
+    <p class="reveal" style="font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#F24F6F;margin-bottom:.5rem;font-weight:500;">Execution Plan &middot; 90-Day Roadmap</p>
+    <h2 class="font-display reveal" style="font-size:clamp(1.7rem,3.2vw,2.6rem);margin:0 0 1.2rem;font-style:italic;">Build the operating model,<br>then scale confidence.</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;margin-bottom:1rem;">
+      <article class="reveal card-hover" style="background:rgba(248,113,113,.07);border:1px solid rgba(248,113,113,.18);border-radius:14px;padding:1.1rem;">
+        <div style="font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;color:#F87171;margin-bottom:.5rem;font-weight:600;">Days 1&ndash;30</div>
+        <div style="font-weight:600;font-size:.95rem;margin-bottom:.6rem;">Foundation</div>
+        <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:.35rem;">
+          <li style="font-size:.78rem;color:var(--text-2);display:flex;align-items:flex-start;gap:.45rem;"><span style="color:#F87171;flex-shrink:0;">&bull;</span>Full content audit vs use cases</li>
+          <li style="font-size:.78rem;color:var(--text-2);display:flex;align-items:flex-start;gap:.45rem;"><span style="color:#F87171;flex-shrink:0;">&bull;</span>Tag architecture live in Zendesk</li>
+          <li style="font-size:.78rem;color:var(--text-2);display:flex;align-items:flex-start;gap:.45rem;"><span style="color:#F87171;flex-shrink:0;">&bull;</span>Metric quality baseline set</li>
+        </ul>
+      </article>
+      <article class="reveal card-hover" style="background:rgba(242,79,111,.07);border:1px solid rgba(242,79,111,.18);border-radius:14px;padding:1.1rem;">
+        <div style="font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;color:#F24F6F;margin-bottom:.5rem;font-weight:600;">Days 31&ndash;60</div>
+        <div style="font-weight:600;font-size:.95rem;margin-bottom:.6rem;">Quick Wins</div>
+        <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:.35rem;">
+          <li style="font-size:.78rem;color:var(--text-2);display:flex;align-items:flex-start;gap:.45rem;"><span style="color:#F24F6F;flex-shrink:0;">&bull;</span>Pareto sprint: top 3 fallback drivers</li>
+          <li style="font-size:.78rem;color:var(--text-2);display:flex;align-items:flex-start;gap:.45rem;"><span style="color:#F24F6F;flex-shrink:0;">&bull;</span>Guardrails + tone controls deployed</li>
+          <li style="font-size:.78rem;color:var(--text-2);display:flex;align-items:flex-start;gap:.45rem;"><span style="color:#F24F6F;flex-shrink:0;">&bull;</span>First BSAT signals from tag layer</li>
+        </ul>
+      </article>
+      <article class="reveal card-hover" style="background:rgba(252,174,190,.07);border:1px solid rgba(252,174,190,.18);border-radius:14px;padding:1.1rem;">
+        <div style="font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;color:#FCAEBE;margin-bottom:.5rem;font-weight:600;">Days 61&ndash;90</div>
+        <div style="font-weight:600;font-size:.95rem;margin-bottom:.6rem;">Scale</div>
+        <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:.35rem;">
+          <li style="font-size:.78rem;color:var(--text-2);display:flex;align-items:flex-start;gap:.45rem;"><span style="color:#FCAEBE;flex-shrink:0;">&bull;</span>API integrations sequenced live</li>
+          <li style="font-size:.78rem;color:var(--text-2);display:flex;align-items:flex-start;gap:.45rem;"><span style="color:#FCAEBE;flex-shrink:0;">&bull;</span>Feedback loop cadence running</li>
+          <li style="font-size:.78rem;color:var(--text-2);display:flex;align-items:flex-start;gap:.45rem;"><span style="color:#FCAEBE;flex-shrink:0;">&bull;</span>A/B cohort validation in place</li>
+        </ul>
+      </article>
+    </div>
+    <div class="reveal" style="display:flex;gap:.9rem;flex-wrap:wrap;">
+      <div style="flex:1;min-width:180px;background:rgba(242,79,111,.08);border:1px solid rgba(242,79,111,.18);border-radius:12px;padding:.85rem 1rem;display:flex;align-items:center;gap:.85rem;">
+        <div class="text-gradient glow-pulse" style="font-size:1.8rem;font-weight:700;line-height:1;">70%</div>
+        <div><div style="font-size:.8rem;font-weight:600;">Digital Deflection Rate</div><div style="font-size:.7rem;color:#7888a8;">Up from 58%</div></div>
+      </div>
+      <div style="flex:1;min-width:180px;background:rgba(252,174,190,.08);border:1px solid rgba(252,174,190,.18);border-radius:12px;padding:.85rem 1rem;display:flex;align-items:center;gap:.85rem;">
+        <div class="text-gradient-2" style="font-size:1.8rem;font-weight:700;line-height:1;">60%</div>
+        <div><div style="font-size:.8rem;font-weight:600;">Partner BSAT</div><div style="font-size:.7rem;color:#7888a8;">Up from 50%</div></div>
+      </div>
+      <div style="flex:1.4;min-width:240px;background:rgba(248,130,156,.07);border:1px solid rgba(248,130,156,.15);border-radius:12px;padding:.85rem 1rem;font-size:.82rem;color:var(--text-2);display:flex;align-items:center;">
+        <span><strong style="color:#F8829C;">The difference</strong> between a bot program and a digital service model: one launches features. The other compounds trust.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- NAVIGATION -->
+<nav class="nav-controls" aria-label="Slide navigation">
+  <button class="nav-btn" id="prev-btn" type="button" aria-label="Previous slide" title="Previous (←)">&#8249;</button>
+  <button class="nav-btn compact font-toggle" id="font-toggle-btn" type="button" aria-pressed="false" title="Toggle large text (F)">A+</button>
+  <div class="slide-dots" id="dots" role="tablist" aria-label="Jump to slide"></div>
+  <button class="nav-btn compact" id="help-btn" type="button" aria-label="Keyboard shortcuts" title="Help (?)">?</button>
+  <button class="nav-btn" id="next-btn" type="button" aria-label="Next slide" title="Next (→)">&#8250;</button>
+  <span class="slide-counter" id="counter" aria-live="polite" aria-atomic="true">1 / 8</span>
+</nav>
+
+<!-- HELP OVERLAY -->
+<div class="help-overlay" id="help-overlay" role="dialog" aria-modal="true" aria-labelledby="help-title">
+  <div class="help-card">
+    <h3 id="help-title" class="font-display">Keyboard shortcuts</h3>
+    <p style="font-size:.8rem;color:var(--text-mute);margin:0 0 1rem;">Navigate and present without touching the mouse.</p>
+    <div class="row"><span>Next slide</span><span><kbd>&rarr;</kbd> <kbd>Space</kbd> <kbd>PgDn</kbd></span></div>
+    <div class="row"><span>Previous slide</span><span><kbd>&larr;</kbd> <kbd>PgUp</kbd></span></div>
+    <div class="row"><span>First / last slide</span><span><kbd>Home</kbd> <kbd>End</kbd></span></div>
+    <div class="row"><span>Toggle large text</span><span><kbd>F</kbd></span></div>
+    <div class="row"><span>Print / save as PDF</span><span><kbd>Ctrl</kbd> + <kbd>P</kbd></span></div>
+    <div class="row"><span>Close this dialog</span><span><kbd>Esc</kbd> &nbsp; <kbd>?</kbd></span></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  const slides   = Array.from(document.querySelectorAll('.slide'));
+  const total    = slides.length;
+  const dotsBox  = document.getElementById('dots');
+  const counter  = document.getElementById('counter');
+  const progress = document.getElementById('progress-fill');
+  const helpEl   = document.getElementById('help-overlay');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isTouch  = window.matchMedia('(hover: none)').matches;
+  let current = 1;
+
+  // Build dots
+  const slideTitles = slides.map(s => s.getAttribute('aria-label') || ('Slide ' + s.dataset.slide));
+  slideTitles.forEach((label, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'dot' + (i === 0 ? ' active' : '');
+    b.setAttribute('role', 'tab');
+    b.setAttribute('aria-label', 'Go to ' + label);
+    b.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+    b.addEventListener('click', () => goToSlide(i + 1));
+    dotsBox.appendChild(b);
+  });
+
+  function setActiveExitClass(prevEl, dir) {
+    prevEl.classList.remove('active');
+    prevEl.classList.add(dir > 0 ? 'exiting-forward' : 'exiting-backward');
+    setTimeout(() => prevEl.classList.remove('exiting-forward', 'exiting-backward'), 700);
+  }
+
+  function goToSlide(n) {
+    if (n === current || n < 1 || n > total) return;
+    const dir = n - current;
+    const prevEl = document.querySelector('.slide.active');
+    const nextEl = document.querySelector('.slide[data-slide="' + n + '"]');
+    if (prevEl) setActiveExitClass(prevEl, dir);
+    if (nextEl) {
+      nextEl.classList.add('active');
+      runReveal(nextEl);
+      runComponentAnims(nextEl);
+    }
+    current = n;
+    updateChrome();
+  }
+
+  function changeSlide(dir) {
+    let next = current + dir;
+    if (next < 1) next = 1;
+    if (next > total) next = total;
+    goToSlide(next);
+  }
+
+  function updateChrome() {
+    document.querySelectorAll('#dots .dot').forEach((d, i) => {
+      const active = (i + 1) === current;
+      d.classList.toggle('active', active);
+      d.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    counter.textContent = current + ' / ' + total;
+    progress.style.width = ((current / total) * 100) + '%';
+    // Pause particle canvases on inactive slides
+    slides.forEach(s => {
+      const c = s.querySelector('canvas.particle-canvas, canvas.particle-canvas-ambient');
+      if (c) c.dataset.active = (s.classList.contains('active')) ? '1' : '0';
+    });
+  }
+
+  // Reveal stagger (respects reduced motion)
+  function runReveal(slide) {
+    const els = slide.querySelectorAll('.reveal');
+    els.forEach((el, i) => {
+      el.style.transition = 'none';
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      // force reflow
+      void el.offsetHeight;
+      const delay = reduceMotion ? 0 : i * 0.07;
+      el.style.transition = 'opacity .4s var(--ease) ' + delay + 's, transform .4s var(--ease) ' + delay + 's';
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    });
+  }
+
+  function runComponentAnims(slide) {
+    slide.querySelectorAll('.bar-fill').forEach((bar, i) => {
+      bar.style.width = '0%';
+      void bar.offsetHeight;
+      bar.style.transition = 'width .6s var(--ease) ' + (i * 0.08) + 's';
+      bar.style.width = (bar.dataset.width || 0) + '%';
+    });
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (helpEl.classList.contains('open')) {
+      if (e.key === 'Escape' || e.key === '?') { e.preventDefault(); helpEl.classList.remove('open'); }
+      return;
+    }
+    switch (e.key) {
+      case 'ArrowRight':
+      case 'PageDown':
+      case ' ':
+        e.preventDefault(); changeSlide(1); break;
+      case 'ArrowLeft':
+      case 'PageUp':
+        e.preventDefault(); changeSlide(-1); break;
+      case 'Home':
+        e.preventDefault(); goToSlide(1); break;
+      case 'End':
+        e.preventDefault(); goToSlide(total); break;
+      case 'f': case 'F':
+        toggleFontSize(); break;
+      case '?':
+        e.preventDefault(); helpEl.classList.add('open'); break;
+    }
+  });
+
+  // Buttons
+  document.getElementById('prev-btn').addEventListener('click', () => changeSlide(-1));
+  document.getElementById('next-btn').addEventListener('click', () => changeSlide(1));
+  document.getElementById('font-toggle-btn').addEventListener('click', toggleFontSize);
+  document.getElementById('help-btn').addEventListener('click', () => helpEl.classList.add('open'));
+  helpEl.addEventListener('click', (e) => { if (e.target === helpEl) helpEl.classList.remove('open'); });
+
+  function toggleFontSize() {
+    const root = document.documentElement;
+    const btn  = document.getElementById('font-toggle-btn');
+    const on   = !root.classList.contains('large-text');
+    root.classList.toggle('large-text', on);
+    btn.classList.toggle('active', on);
+    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+  }
+
+  // Touch swipe
+  let touchStartX = 0;
+  document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener('touchend', (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
+  });
+
+  // Mouse spotlight (desktop only, respect reduced motion)
+  if (!isTouch && !reduceMotion) {
+    const spot = document.querySelector('.mouse-spotlight');
+    if (spot) {
+      document.addEventListener('mousemove', (e) => {
+        spot.style.background = 'radial-gradient(600px circle at ' + e.clientX + 'px ' + e.clientY + 'px, rgba(242,79,111,0.06), transparent 40%)';
+      });
+    }
+  }
+
+  // Initial
+  runReveal(document.querySelector('.slide.active'));
+  runComponentAnims(document.querySelector('.slide.active'));
+  updateChrome();
+})();
+</script>
+
+</body>
+</html>
